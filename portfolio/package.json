@@ -1,0 +1,16 @@
+{
+  "name": "portfolio",
+  "version": "1.0.0",
+  "description": "Portfolio pribadi Kalyca Suganda",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [
+    "portfolio",
+    "kalyca-suganda"
+  ],
+  "author": "Kalyca Suganda",
+  "license": "ISC"
+}
+

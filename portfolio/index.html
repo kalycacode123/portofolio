@@ -1,0 +1,2134 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portofolio tugas kuliah pemrograman web oleh Kalyca Suganda — Mahasiswa S1 Teknik Informatika UNESA (Angkatan 2026) asal Palembang." />
+  <meta name="theme-color" content="#060f24" />
+  <title>Kalyca Suganda — Portofolio Tugas Pemrograman Web | Teknik Informatika UNESA</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ============================== Design Tokens ============================== */
+    :root {
+      --bg: #060f24;
+      --bg-soft: #0a1440;
+      --surface: rgba(255, 255, 255, 0.04);
+      --surface-hover: rgba(255, 255, 255, 0.08);
+      --border: rgba(255, 255, 255, 0.1);
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+      --muted-2: #64748b;
+      --accent: #38bdf8;
+      --accent-light: #7dd3fc;
+      --accent-dark: #0ea5e9;
+      --navy-400: #5d8aff;
+      --navy-700: #1a33dd;
+      --success: #34d399;
+      --danger: #f87171;
+      --radius: 1.25rem;
+      --radius-lg: 1.75rem;
+      --container: 72rem;
+      --header-h: 4.5rem;
+      --font-heading: "Sora", system-ui, sans-serif;
+      --font-body: "Plus Jakarta Sans", system-ui, sans-serif;
+      --shadow-card: 0 25px 50px -25px rgba(2, 6, 23, 0.9);
+      --glow: 0 0 45px -12px rgba(56, 189, 248, 0.5);
+    }
+
+    /* ============================== Base ============================== */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 6rem;
+      color-scheme: dark;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: var(--font-body);
+      color: var(--text);
+      line-height: 1.6;
+      background-color: var(--bg);
+      background-image:
+        radial-gradient(900px 500px at 12% -8%, rgba(26, 51, 221, 0.35) 0%, transparent 60%),
+        radial-gradient(800px 480px at 88% 8%, rgba(14, 165, 233, 0.18) 0%, transparent 55%),
+        radial-gradient(700px 700px at 50% 110%, rgba(28, 48, 140, 0.3) 0%, transparent 60%);
+      background-attachment: fixed;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body.menu-open {
+      overflow: hidden;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    button,
+    input,
+    textarea {
+      font: inherit;
+      color: inherit;
+    }
+
+    ::selection {
+      background: var(--accent);
+      color: var(--bg);
+    }
+
+    :focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px rgba(56, 189, 248, 0.7);
+      border-radius: 6px;
+    }
+
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--bg);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--bg-soft);
+      border: 2px solid var(--bg);
+      border-radius: 999px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--navy-700);
+    }
+
+    .skip-link {
+      position: absolute;
+      top: -100%;
+      left: 1rem;
+      z-index: 200;
+      padding: 0.75rem 1.25rem;
+      background: var(--accent);
+      color: var(--bg);
+      font-weight: 700;
+      border-radius: 0 0 0.75rem 0.75rem;
+      transition: top 0.2s ease;
+    }
+
+    .skip-link:focus {
+      top: 0;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--container);
+      margin-inline: auto;
+      padding-inline: 1.25rem;
+    }
+
+    @media (min-width: 640px) {
+      .container {
+        padding-inline: 2rem;
+      }
+    }
+
+    h1, h2, h3, h4 {
+      font-family: var(--font-heading);
+      color: #fff;
+      line-height: 1.2;
+    }
+
+    .gradient-text {
+      background: linear-gradient(90deg, var(--accent-light), var(--accent), var(--navy-400));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .glass {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-radius: var(--radius);
+    }
+
+    /* ============================== Buttons ============================== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.85rem 1.75rem;
+      border: 1px solid transparent;
+      border-radius: 0.875rem;
+      font-size: 0.9375rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+    }
+
+    .btn:active {
+      transform: translateY(0);
+    }
+
+    .btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .btn-primary {
+      background: linear-gradient(90deg, var(--accent-dark), var(--accent));
+      color: var(--bg);
+      box-shadow: 0 10px 40px -15px rgba(56, 189, 248, 0.35);
+    }
+
+    .btn-primary:hover {
+      box-shadow: var(--glow);
+      filter: brightness(1.08);
+    }
+
+    .btn-outline {
+      background: rgba(56, 189, 248, 0.05);
+      border-color: rgba(56, 189, 248, 0.4);
+      color: var(--accent-light);
+    }
+
+    .btn-outline:hover {
+      background: rgba(56, 189, 248, 0.15);
+      border-color: var(--accent);
+      color: #fff;
+    }
+
+    .btn-ghost {
+      background: rgba(255, 255, 255, 0.03);
+      border-color: var(--border);
+      color: var(--text);
+    }
+
+    .btn-ghost:hover {
+      background: var(--surface-hover);
+      border-color: rgba(255, 255, 255, 0.25);
+      color: #fff;
+    }
+
+    .btn-sm {
+      padding: 0.55rem 1.1rem;
+      font-size: 0.8125rem;
+      border-radius: 0.65rem;
+    }
+
+    .btn-block {
+      width: 100%;
+    }
+
+    .icon {
+      width: 1.1em;
+      height: 1.1em;
+      flex-shrink: 0;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .brand-icon {
+      width: 1.15em;
+      height: 1.15em;
+      flex-shrink: 0;
+    }
+
+    /* ============================== Header / Navbar ============================== */
+    .site-header {
+      position: fixed;
+      inset-inline: 0;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid transparent;
+      transition: background 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .site-header.scrolled {
+      background: rgba(6, 15, 36, 0.82);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom-color: var(--border);
+      box-shadow: var(--shadow-card);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: var(--header-h);
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-family: var(--font-heading);
+      font-size: 1.125rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .brand-mark {
+      display: grid;
+      place-items: center;
+      width: 2.25rem;
+      height: 2.25rem;
+      border-radius: 0.75rem;
+      background: linear-gradient(135deg, var(--accent-dark), var(--navy-700));
+      color: var(--bg);
+      font-size: 1.05rem;
+      font-weight: 800;
+      box-shadow: 0 10px 40px -15px rgba(56, 189, 248, 0.35);
+      transition: transform 0.3s ease;
+    }
+
+    .brand:hover .brand-mark {
+      transform: rotate(8deg);
+    }
+
+    .brand-dot {
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: none;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .nav-links a {
+      position: relative;
+      padding: 0.5rem 1rem;
+      border-radius: 0.6rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--muted);
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: #fff;
+    }
+
+    .nav-links a.active {
+      color: var(--accent-light);
+    }
+
+    .nav-links a.active::after {
+      content: "";
+      position: absolute;
+      inset-inline: 0.85rem;
+      bottom: 0.15rem;
+      height: 2px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 12px rgba(56, 189, 248, 0.8);
+    }
+
+    .nav-cta {
+      display: none;
+    }
+
+    .hamburger {
+      display: grid;
+      place-items: center;
+      width: 2.75rem;
+      height: 2.75rem;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border);
+      border-radius: 0.75rem;
+      color: #fff;
+      font-size: 1.35rem;
+      cursor: pointer;
+      transition: border-color 0.3s ease, color 0.3s ease;
+    }
+
+    .hamburger:hover {
+      border-color: rgba(56, 189, 248, 0.5);
+      color: var(--accent-light);
+    }
+
+    .mobile-menu {
+      display: none;
+      border-top: 1px solid var(--border);
+      background: rgba(6, 15, 36, 0.97);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
+
+    .mobile-menu.open {
+      display: block;
+      animation: slideDown 0.28s ease;
+    }
+
+    .mobile-menu ul {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      padding: 1rem 0 1.25rem;
+    }
+
+    .mobile-menu a.menu-link {
+      display: block;
+      padding: 0.8rem 1rem;
+      border-radius: 0.75rem;
+      font-weight: 500;
+      color: var(--text);
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    .mobile-menu a.menu-link:hover,
+    .mobile-menu a.menu-link.active {
+      background: rgba(56, 189, 248, 0.1);
+      color: var(--accent-light);
+    }
+
+    .mobile-menu .btn {
+      margin-top: 0.75rem;
+    }
+
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (min-width: 900px) {
+      .nav-links,
+      .nav-cta {
+        display: flex;
+      }
+
+      .hamburger,
+      .mobile-menu,
+      .mobile-menu.open {
+        display: none;
+      }
+    }
+
+    /* ============================== Section shared ============================== */
+    section {
+      padding-block: 4.5rem;
+    }
+
+    @media (min-width: 768px) {
+      section {
+        padding-block: 6.5rem;
+      }
+    }
+
+    .section-head {
+      max-width: 42rem;
+      margin: 0 auto 3rem;
+      text-align: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+      padding: 0.4rem 1.1rem;
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      background: rgba(56, 189, 248, 0.1);
+      border-radius: 999px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent-light);
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 0.4rem;
+      height: 0.4rem;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 10px rgba(56, 189, 248, 0.9);
+    }
+
+    .section-head h2 {
+      font-size: clamp(1.85rem, 4vw, 2.75rem);
+      font-weight: 700;
+    }
+
+    .section-head p {
+      margin-top: 1rem;
+      color: var(--muted);
+    }
+
+    /* ============================== Hero ============================== */
+    .hero {
+      position: relative;
+      display: flex;
+      align-items: center;
+      min-height: 100vh;
+      padding-top: calc(var(--header-h) + 3rem);
+      padding-bottom: 4rem;
+      overflow: hidden;
+    }
+
+    .hero-glow {
+      position: absolute;
+      top: 25%;
+      left: 50%;
+      width: 26rem;
+      height: 26rem;
+      transform: translateX(-50%);
+      background: rgba(56, 189, 248, 0.15);
+      filter: blur(110px);
+      border-radius: 50%;
+      animation: pulseGlow 4.5s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      display: grid;
+      gap: 3.5rem;
+      align-items: center;
+    }
+
+    @media (min-width: 1024px) {
+      .hero-grid {
+        grid-template-columns: 1.15fr 0.85fr;
+      }
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      margin-bottom: 1.25rem;
+      padding: 0.45rem 1.1rem;
+      border: 1px solid rgba(52, 211, 153, 0.3);
+      background: rgba(52, 211, 153, 0.1);
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #6ee7b7;
+    }
+
+    .status-dot {
+      position: relative;
+      width: 0.5rem;
+      height: 0.5rem;
+      border-radius: 50%;
+      background: var(--success);
+    }
+
+    .status-dot::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      background: var(--success);
+      animation: ping 1.6s cubic-bezier(0, 0, 0.2, 1) infinite;
+    }
+
+    .hero-greeting {
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: var(--muted);
+    }
+
+    .hero h1 {
+      margin-top: 0.35rem;
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .hero-role {
+      margin-top: 0.9rem;
+      font-family: var(--font-heading);
+      font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+      font-weight: 600;
+      color: var(--accent-light);
+    }
+
+    .hero-desc {
+      margin-top: 1.1rem;
+      max-width: 36rem;
+      color: var(--muted);
+      font-size: 1.02rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1.8rem;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1.5rem;
+      margin-top: 2.2rem;
+    }
+
+    .socials {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+    }
+
+    .social-link {
+      display: grid;
+      place-items: center;
+      width: 2.7rem;
+      height: 2.7rem;
+      border: 1px solid var(--border);
+      border-radius: 0.8rem;
+      background: rgba(255, 255, 255, 0.04);
+      backdrop-filter: blur(8px);
+      transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .social-link .brand-icon {
+      width: 1.25rem;
+      height: 1.25rem;
+      filter: grayscale(1) brightness(1.5);
+      transition: filter 0.3s ease;
+    }
+
+    .social-link:hover {
+      transform: translateY(-5px);
+      border-color: rgba(56, 189, 248, 0.5);
+      background: rgba(56, 189, 248, 0.15);
+      box-shadow: 0 10px 40px -15px rgba(56, 189, 248, 0.35);
+    }
+
+    .social-link:hover .brand-icon {
+      filter: grayscale(1) brightness(2.3);
+    }
+
+    .location-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.875rem;
+      color: var(--muted-2);
+    }
+
+    .location-chip .icon {
+      color: var(--accent);
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+      max-width: 28rem;
+      margin-top: 2.4rem;
+      padding-top: 1.6rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .hero-stats .value {
+      display: block;
+      font-family: var(--font-heading);
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .hero-stats .label {
+      display: block;
+      margin-top: 0.2rem;
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted-2);
+    }
+
+    /* Hero photo */
+    .hero-visual {
+      position: relative;
+      width: 100%;
+      max-width: 24rem;
+      margin-inline: auto;
+    }
+
+    .hero-ring {
+      position: absolute;
+      inset: -1.5rem;
+      border: 1px dashed rgba(56, 189, 248, 0.35);
+      border-radius: 50%;
+      animation: spin 18s linear infinite;
+      pointer-events: none;
+    }
+
+    .hero-halo {
+      position: absolute;
+      inset: -0.5rem;
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.3), rgba(26, 51, 221, 0.4), rgba(56, 189, 248, 0.1));
+      filter: blur(24px);
+      border-radius: var(--radius-lg);
+      pointer-events: none;
+    }
+
+    .hero-photo {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-card), 0 0 45px -12px rgba(56, 189, 248, 0.4);
+      animation: float 6s ease-in-out infinite;
+      background: radial-gradient(circle at 50% 32%, #1b3294 0%, #0a1440 52%, #060f24 90%);
+    }
+
+    .hero-photo img {
+      display: block;
+      width: 100%;
+      height: auto;
+      transition: filter 0.3s ease;
+    }
+
+    .hero-photo::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(6, 15, 36, 0.85) 0%, rgba(6, 15, 36, 0.2) 30%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .float-card {
+      position: absolute;
+      display: none;
+      padding: 0.75rem 1rem;
+      background: rgba(6, 15, 36, 0.85);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      backdrop-filter: blur(12px);
+      box-shadow: var(--shadow-card);
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .float-card .caption {
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--muted-2);
+    }
+
+    .float-card .value {
+      margin-top: 0.15rem;
+      font-family: var(--font-heading);
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: #fff;
+    }
+
+    .float-card .value.ok {
+      color: var(--success);
+    }
+
+    .float-card.left {
+      top: 2rem;
+      left: -2rem;
+      animation-delay: 1s;
+    }
+
+    .float-card.right {
+      right: -1.5rem;
+      bottom: 2.5rem;
+      animation-delay: 1.6s;
+    }
+
+    @media (min-width: 640px) {
+      .float-card {
+        display: block;
+      }
+    }
+
+    /* ============================== About ============================== */
+    .about-grid {
+      display: grid;
+      gap: 3rem;
+    }
+
+    @media (min-width: 1024px) {
+      .about-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 3.5rem;
+      }
+    }
+
+    .about-photo-wrap {
+      position: relative;
+      max-width: 26rem;
+      margin-inline: auto;
+    }
+
+    .about-photo-wrap::before {
+      content: "";
+      position: absolute;
+      inset: -0.75rem;
+      background: linear-gradient(160deg, rgba(56, 189, 248, 0.25), rgba(13, 28, 120, 0.2));
+      filter: blur(18px);
+      border-radius: var(--radius-lg);
+      pointer-events: none;
+    }
+
+    .about-photo-frame {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-card);
+      background: radial-gradient(circle at 50% 32%, #1b3294 0%, #0a1440 52%, #060f24 90%);
+    }
+
+    .about-photo-frame::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(6, 15, 36, 0.85) 0%, rgba(6, 15, 36, 0.2) 30%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .about-photo {
+      position: relative;
+      display: block;
+      width: 100%;
+      height: auto;
+      transition: filter 0.3s ease;
+    }
+
+    .profile-blend-filter {
+      filter: url(#blend-profile-bg);
+    }
+
+    .about-experience-badge {
+      position: absolute;
+      right: 1rem;
+      bottom: -1.5rem;
+      padding: 1rem 1.25rem;
+      text-align: center;
+      background: rgba(6, 15, 36, 0.9);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      backdrop-filter: blur(12px);
+      box-shadow: var(--shadow-card);
+    }
+
+    .about-experience-badge strong {
+      display: block;
+      font-family: var(--font-heading);
+      font-size: 1.75rem;
+      color: var(--accent-light);
+    }
+
+    .about-experience-badge span {
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+    }
+
+    .about-info {
+      display: grid;
+      gap: 0.9rem;
+      margin-top: 3rem;
+    }
+
+    @media (min-width: 560px) {
+      .about-info {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    .info-card {
+      padding: 1rem;
+      transition: border-color 0.3s ease;
+    }
+
+    .info-card:hover {
+      border-color: rgba(56, 189, 248, 0.3);
+    }
+
+    .info-card .label {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted-2);
+    }
+
+    .info-card .label .icon {
+      color: var(--accent);
+      width: 0.9em;
+      height: 0.9em;
+    }
+
+    .info-card .value {
+      margin-top: 0.4rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: #fff;
+      word-break: break-word;
+    }
+
+    .about-content h3 {
+      font-size: clamp(1.4rem, 3vw, 1.85rem);
+      margin-bottom: 1rem;
+    }
+
+    .about-content p {
+      color: var(--muted);
+      margin-bottom: 0.85rem;
+    }
+
+    .about-content strong {
+      color: var(--accent-light);
+      font-weight: 600;
+    }
+
+    .timeline {
+      margin-top: 1.8rem;
+      border-left: 2px solid rgba(56, 189, 248, 0.3);
+      padding-left: 1.3rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.4rem;
+    }
+
+    .timeline .period {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+    }
+
+    .timeline .period .icon {
+      width: 0.95em;
+      height: 0.95em;
+      transition: transform 0.3s ease;
+    }
+
+    .timeline li:hover .period .icon {
+      transform: translateY(-2px);
+    }
+
+    .timeline h4 {
+      margin-top: 0.3rem;
+      font-size: 1rem;
+    }
+
+    .timeline p {
+      margin-top: 0.3rem;
+      margin-bottom: 0;
+      font-size: 0.9rem;
+    }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .stat-card {
+      padding: 1rem;
+      text-align: center;
+      transition: border-color 0.3s ease;
+    }
+
+    .stat-card:hover {
+      border-color: rgba(56, 189, 248, 0.3);
+    }
+
+    .stat-card strong {
+      display: block;
+      font-family: var(--font-heading);
+      font-size: 1.5rem;
+      color: #fff;
+    }
+
+    .stat-card span {
+      font-size: 0.66rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted-2);
+    }
+
+    /* ============================== Projects ============================== */
+    .projects-grid {
+      display: grid;
+      gap: 1.75rem;
+    }
+
+    @media (min-width: 640px) {
+      .projects-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .projects-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    .project-card {
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      transition: transform 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-10px);
+      border-color: rgba(56, 189, 248, 0.4);
+      box-shadow: 0 10px 40px -15px rgba(56, 189, 248, 0.35);
+    }
+
+    .project-thumb {
+      position: relative;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      background: var(--bg-soft);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .project-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.7s ease;
+    }
+
+    .project-card:hover .project-thumb img {
+      transform: scale(1.06);
+    }
+
+    .project-thumb::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(6, 15, 36, 0.85), transparent 55%);
+      opacity: 0.75;
+      transition: opacity 0.5s ease;
+    }
+
+    .project-card:hover .project-thumb::after {
+      opacity: 0.9;
+    }
+
+    .project-category {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      z-index: 1;
+      padding: 0.3rem 0.85rem;
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      background: rgba(6, 15, 36, 0.75);
+      backdrop-filter: blur(8px);
+      border-radius: 999px;
+      font-size: 0.66rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent-light);
+    }
+
+    .project-body {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      padding: 1.5rem;
+    }
+
+    .project-body h3 {
+      font-size: 1.2rem;
+      transition: color 0.3s ease;
+    }
+
+    .project-card:hover .project-body h3 {
+      color: var(--accent-light);
+    }
+
+    .project-body p {
+      flex: 1;
+      margin-top: 0.7rem;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .tech-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+
+    .tech-badge {
+      padding: 0.25rem 0.65rem;
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 0.5rem;
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: var(--text);
+      transition: border-color 0.3s ease;
+    }
+
+    .project-card:hover .tech-badge {
+      border-color: rgba(56, 189, 248, 0.25);
+    }
+
+    .project-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 1.4rem;
+      padding-top: 1.2rem;
+      border-top: 1px solid var(--border);
+    }
+
+    /* ============================== Skills ============================== */
+    .skill-group + .skill-group {
+      margin-top: 3rem;
+    }
+
+    .skill-group-head {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      margin-bottom: 1.3rem;
+    }
+
+    .skill-group-head h3 {
+      font-size: 1.1rem;
+    }
+
+    .skill-group-head .line {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, rgba(56, 189, 248, 0.4), transparent);
+    }
+
+    .skill-group-head .count {
+      padding: 0.2rem 0.75rem;
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 999px;
+      font-size: 0.72rem;
+      color: var(--muted);
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    @media (min-width: 640px) {
+      .skills-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .skills-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+    }
+
+    @media (min-width: 1280px) {
+      .skills-grid {
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+      }
+    }
+
+    .skill-card {
+      position: relative;
+      overflow: hidden;
+      padding: 1.25rem;
+      transition: transform 0.4s ease, border-color 0.4s ease;
+    }
+
+    .skill-card::before {
+      content: "";
+      position: absolute;
+      top: -2.5rem;
+      right: -2.5rem;
+      width: 7rem;
+      height: 7rem;
+      background: rgba(56, 189, 248, 0.12);
+      border-radius: 50%;
+      filter: blur(18px);
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+
+    .skill-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(56, 189, 248, 0.4);
+    }
+
+    .skill-card:hover::before {
+      opacity: 1;
+    }
+
+    .skill-icon {
+      display: grid;
+      place-items: center;
+      width: 3rem;
+      height: 3rem;
+      margin-bottom: 1rem;
+      border-radius: 1rem;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--border);
+      transition: transform 0.35s ease;
+    }
+
+    .skill-card:hover .skill-icon {
+      transform: scale(1.1) rotate(4deg);
+    }
+
+    .skill-icon img {
+      width: 1.65rem;
+      height: 1.65rem;
+    }
+
+    .skill-card h4 {
+      font-size: 0.95rem;
+      transition: color 0.3s ease;
+    }
+
+    .skill-card:hover h4 {
+      color: var(--accent-light);
+    }
+
+    .skill-category {
+      display: inline-block;
+      margin-top: 0.45rem;
+      padding: 0.15rem 0.6rem;
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 999px;
+      font-size: 0.62rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+    }
+
+    .skill-bar {
+      margin-top: 0.9rem;
+      height: 0.375rem;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .skill-bar span {
+      display: block;
+      height: 100%;
+      width: 0;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--accent-dark), var(--accent));
+      transition: width 1s ease 0.2s;
+    }
+
+    .skill-bar.animate span {
+      width: var(--level);
+    }
+
+    /* ============================== Contact ============================== */
+    .contact-grid {
+      display: grid;
+      gap: 2rem;
+    }
+
+    @media (min-width: 1024px) {
+      .contact-grid {
+        grid-template-columns: 0.9fr 1.1fr;
+        gap: 2.5rem;
+      }
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 2rem;
+      padding: 1.75rem;
+    }
+
+    .contact-info h3 {
+      font-size: 1.4rem;
+    }
+
+    .contact-info > div > p {
+      margin-top: 0.75rem;
+      font-size: 0.92rem;
+      color: var(--muted);
+    }
+
+    .contact-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 1.75rem;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.5rem;
+      border: 1px solid transparent;
+      border-radius: 1rem;
+      transition: background 0.3s ease, border-color 0.3s ease;
+    }
+
+    a.contact-item:hover {
+      background: rgba(255, 255, 255, 0.04);
+      border-color: var(--border);
+    }
+
+    .contact-item .badge {
+      display: grid;
+      place-items: center;
+      width: 2.75rem;
+      height: 2.75rem;
+      flex-shrink: 0;
+      border: 1px solid var(--border);
+      background: rgba(56, 189, 248, 0.1);
+      border-radius: 0.75rem;
+      color: var(--accent-light);
+      font-size: 1.15rem;
+      transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease;
+    }
+
+    .contact-item:hover .badge {
+      transform: scale(1.08);
+      background: rgba(56, 189, 248, 0.2);
+      border-color: rgba(56, 189, 248, 0.4);
+    }
+
+    .contact-item .label {
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted-2);
+    }
+
+    .contact-item .value {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: #fff;
+      transition: color 0.3s ease;
+    }
+
+    a.contact-item:hover .value {
+      color: var(--accent-light);
+    }
+
+    .response-note {
+      padding: 1rem;
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      background: rgba(56, 189, 248, 0.05);
+      border-radius: 1rem;
+      font-size: 0.875rem;
+      color: var(--text);
+    }
+
+    .response-note strong {
+      color: var(--accent-light);
+    }
+
+    .contact-map-wrap {
+      margin-top: 1.25rem;
+      border-radius: 1rem;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      position: relative;
+      background: rgba(10, 20, 64, 0.4);
+      box-shadow: 0 10px 25px -10px rgba(0, 0, 0, 0.5);
+    }
+
+    .contact-map-wrap iframe {
+      width: 100%;
+      height: 170px;
+      border: 0;
+      display: block;
+      filter: invert(90%) hue-rotate(180deg) contrast(110%);
+      opacity: 0.85;
+      transition: opacity 0.3s ease, filter 0.3s ease;
+    }
+
+    .contact-map-wrap:hover iframe {
+      opacity: 1;
+      filter: invert(90%) hue-rotate(180deg) contrast(100%);
+    }
+
+    .contact-map-badge {
+      position: absolute;
+      bottom: 0.6rem;
+      left: 0.6rem;
+      background: rgba(6, 15, 36, 0.85);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid var(--border);
+      padding: 0.3rem 0.65rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--text);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      pointer-events: none;
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      padding: 1.75rem;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .field label {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    .field label .req {
+      color: var(--accent);
+    }
+
+    .field input,
+    .field textarea {
+      width: 100%;
+      padding: 0.85rem 1.1rem;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border);
+      border-radius: 0.75rem;
+      backdrop-filter: blur(8px);
+      font-size: 0.9rem;
+      color: #fff;
+      transition: border-color 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .field input::placeholder,
+    .field textarea::placeholder {
+      color: var(--muted-2);
+    }
+
+    .field input:focus,
+    .field textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      background: rgba(255, 255, 255, 0.07);
+      box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.2);
+    }
+
+    .field textarea {
+      resize: vertical;
+      min-height: 8rem;
+    }
+
+    .field.invalid input,
+    .field.invalid textarea {
+      border-color: rgba(248, 113, 113, 0.7);
+    }
+
+    .field-error {
+      display: none;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.75rem;
+      color: var(--danger);
+    }
+
+    .field.invalid .field-error {
+      display: flex;
+    }
+
+    .form-status {
+      display: none;
+      align-items: flex-start;
+      gap: 0.55rem;
+      padding: 0.9rem 1.1rem;
+      border-radius: 0.75rem;
+      font-size: 0.875rem;
+    }
+
+    .form-status.show {
+      display: flex;
+      animation: slideDown 0.3s ease;
+    }
+
+    .form-status.success {
+      border: 1px solid rgba(52, 211, 153, 0.4);
+      background: rgba(52, 211, 153, 0.1);
+      color: #6ee7b7;
+    }
+
+    .form-status.error {
+      border: 1px solid rgba(248, 113, 113, 0.4);
+      background: rgba(248, 113, 113, 0.1);
+      color: #fca5a5;
+    }
+
+    /* ============================== Footer ============================== */
+    .site-footer {
+      border-top: 1px solid var(--border);
+      background: rgba(6, 15, 36, 0.6);
+      backdrop-filter: blur(12px);
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+      padding-block: 2.5rem;
+      text-align: center;
+    }
+
+    @media (min-width: 768px) {
+      .footer-inner {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+      }
+    }
+
+    .footer-brand {
+      font-family: var(--font-heading);
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #fff;
+    }
+
+    .footer-copy {
+      margin-top: 0.25rem;
+      font-size: 0.82rem;
+      color: var(--muted-2);
+    }
+
+    .footer-nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.25rem;
+    }
+
+    .footer-nav a {
+      font-size: 0.875rem;
+      color: var(--muted);
+      transition: color 0.3s ease;
+    }
+
+    .footer-nav a:hover {
+      color: var(--accent-light);
+    }
+
+    /* ============================== Animations ============================== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    .fade-in {
+      opacity: 0;
+      animation: fadeInUp 0.8s ease forwards;
+    }
+
+    .fade-in.d1 { animation-delay: 0.15s; }
+    .fade-in.d2 { animation-delay: 0.3s; }
+    .fade-in.d3 { animation-delay: 0.45s; }
+    .fade-in.d4 { animation-delay: 0.6s; }
+    .fade-in.d5 { animation-delay: 0.75s; }
+    .fade-in.d6 { animation-delay: 0.9s; }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-14px); }
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% { opacity: 0.35; transform: translateX(-50%) scale(1); }
+      50% { opacity: 0.75; transform: translateX(-50%) scale(1.06); }
+    }
+
+    @keyframes ping {
+      75%, 100% { transform: scale(2.4); opacity: 0; }
+    }
+
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+
+      .reveal,
+      .fade-in {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip-link" href="#home">Lewati ke konten utama</a>
+
+  <!-- SVG Filter Blend: Mengganti background merah pasfoto agar menyatu dengan tema dark navy -->
+  <svg class="sr-only" aria-hidden="true" style="position: absolute; width: 0; height: 0; pointer-events: none; opacity: 0;">
+    <defs>
+      <filter id="blend-profile-bg" color-interpolation-filters="sRGB">
+        <feColorMatrix type="matrix" in="SourceGraphic" result="mask"
+          values="0 0 0 0 0
+                  0 0 0 0 0
+                  0 0 0 0 0
+                  -4.5 4.5 4.5 1 0.75" />
+        <feComponentTransfer in="mask" result="smoothMask">
+          <feFuncA type="linear" slope="3" intercept="-0.2" />
+        </feComponentTransfer>
+        <feComposite in="SourceGraphic" in2="smoothMask" operator="in" />
+      </filter>
+    </defs>
+  </svg>
+
+  <!-- ============================== Navbar ============================== -->
+  <header class="site-header" id="site-header">
+    <div class="container nav">
+      <a class="brand" href="#home" aria-label="Kalyca — kembali ke atas">
+        <span class="brand-mark" aria-hidden="true">K</span>
+        <span>Kalyca<span class="brand-dot">.</span></span>
+      </a>
+
+      <nav aria-label="Navigasi utama">
+        <ul class="nav-links" id="nav-links">
+          <li><a class="menu-link active" href="#home">Home</a></li>
+          <li><a class="menu-link" href="#about">About</a></li>
+          <li><a class="menu-link" href="#projects">Projects</a></li>
+          <li><a class="menu-link" href="#skills">Skills</a></li>
+          <li><a class="menu-link" href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-cta">
+        <a class="btn btn-outline" href="cv-kalyca-suganda.pdf" target="_blank" rel="noopener" aria-label="Buka CV Kalyca Suganda (PDF, tab baru)">
+          Download CV
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        </a>
+      </div>
+
+      <button class="hamburger" id="hamburger" type="button" aria-label="Buka menu navigasi" aria-expanded="false" aria-controls="mobile-menu">
+        <svg class="icon" viewBox="0 0 24 24" id="hamburger-icon" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+
+    <div class="mobile-menu" id="mobile-menu">
+      <div class="container">
+        <ul>
+          <li><a class="menu-link active" href="#home">Home</a></li>
+          <li><a class="menu-link" href="#about">About</a></li>
+          <li><a class="menu-link" href="#projects">Projects</a></li>
+          <li><a class="menu-link" href="#skills">Skills</a></li>
+          <li><a class="menu-link" href="#contact">Contact</a></li>
+        </ul>
+        <a class="btn btn-primary btn-block" href="cv-kalyca-suganda.pdf" target="_blank" rel="noopener" aria-label="Buka CV Kalyca Suganda (PDF, tab baru)">
+          Download CV
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <!-- ============================== Hero ============================== -->
+    <section class="hero" id="home" aria-labelledby="hero-title">
+      <div class="hero-glow" aria-hidden="true"></div>
+
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <p class="status-badge fade-in">
+            <span class="status-dot" aria-hidden="true"></span>
+            Tugas Kuliah Pemrograman Web · Mahasiswa Angkatan 2026
+          </p>
+
+          <p class="hero-greeting fade-in d1">Halo, perkenalkan saya</p>
+
+          <h1 id="hero-title" class="fade-in d2">
+            Kalyca <span class="gradient-text">Suganda</span>
+          </h1>
+
+          <p class="hero-role fade-in d3">Mahasiswa S1 Teknik Informatika UNESA · Angkatan 2026</p>
+
+          <p class="hero-desc fade-in d3">
+            Saya mahasiswa S1 Teknik Informatika di Universitas Negeri Surabaya (UNESA) angkatan 2026 yang berasal dari Palembang. Website portofolio ini dibuat untuk memenuhi tugas kuliah, sekaligus sebagai media belajar dan mendokumentasikan latihan dasar pemrograman web seperti HTML, CSS, dan JavaScript.
+          </p>
+
+          <div class="hero-actions fade-in d4">
+            <a class="btn btn-primary" href="#projects">
+              Lihat Tugas Proyek
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+            <a class="btn btn-outline" href="#contact">
+              Kirim Masukan
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </a>
+          </div>
+
+          <div class="hero-meta fade-in d5">
+            <ul class="socials" aria-label="Sosial media">
+              <li>
+                <a class="social-link" href="https://github.com/kalyca" target="_blank" rel="noreferrer noopener" aria-label="Buka profil GitHub Kalyca Suganda">
+                  <img class="brand-icon" src="https://cdn.simpleicons.org/github/94a3b8" alt="" width="20" height="20" />
+                </a>
+              </li>
+              <li>
+                <a class="social-link" href="https://www.linkedin.com/in/kalyca-suganda" target="_blank" rel="noreferrer noopener" aria-label="Buka profil LinkedIn Kalyca Suganda">
+                  <img class="brand-icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linkedin/linkedin-original.svg" alt="" width="20" height="20" />
+                </a>
+              </li>
+              <li>
+                <a class="social-link" href="https://www.instagram.com/kalyca.suganda" target="_blank" rel="noreferrer noopener" aria-label="Buka profil Instagram Kalyca Suganda">
+                  <img class="brand-icon" src="https://cdn.simpleicons.org/instagram/94a3b8" alt="" width="20" height="20" />
+                </a>
+              </li>
+            </ul>
+
+            <span class="location-chip">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Palembang, Indonesia
+            </span>
+          </div>
+
+          <ul class="hero-stats fade-in d6">
+            <li>
+              <span class="value">2026</span>
+              <span class="label">Tahun Angkatan</span>
+            </li>
+            <li>
+              <span class="value">S1</span>
+              <span class="label">Teknik Informatika</span>
+            </li>
+            <li>
+              <span class="value">UNESA</span>
+              <span class="label">Universitas</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="hero-visual fade-in d3">
+          <div class="hero-ring" aria-hidden="true"></div>
+          <div class="hero-halo" aria-hidden="true"></div>
+
+          <div class="hero-photo">
+            <img class="profile-blend-filter" src="images/profile.jpeg" alt="Foto profil Kalyca Suganda, Mahasiswa S1 Teknik Informatika UNESA" width="1122" height="1402" />
+          </div>
+
+          <div class="float-card left" aria-hidden="true">
+            <p class="caption">Fokus Belajar</p>
+            <p class="value">HTML · CSS · JavaScript</p>
+          </div>
+
+          <div class="float-card right" aria-hidden="true">
+            <p class="caption">Status</p>
+            <p class="value ok">Mahasiswa Aktif</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== About ============================== -->
+    <section id="about" aria-labelledby="about-title">
+      <div class="container">
+        <header class="section-head reveal">
+          <span class="eyebrow">Tentang Saya</span>
+          <h2 id="about-title">Biodata & Latar Belakang</h2>
+          <p>Perkenalan singkat mengenai diri saya dan proses belajar di perkuliahan.</p>
+        </header>
+
+        <div class="about-grid">
+          <div class="about-media reveal">
+            <div class="about-photo-wrap">
+              <div class="about-photo-frame">
+                <img class="about-photo profile-blend-filter" src="images/profile.jpeg" alt="Foto profil Kalyca Suganda" width="1122" height="1402" loading="lazy" />
+              </div>
+              <div class="about-experience-badge">
+                <strong>2026</strong>
+                <span>Angkatan</span>
+              </div>
+            </div>
+
+            <ul class="about-info">
+              <li class="info-card glass">
+                <p class="label">
+                  <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                  Domisili / Asal
+                </p>
+                <p class="value">Palembang, Sumsel</p>
+              </li>
+              <li class="info-card glass">
+                <p class="label">
+                  <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                  Email
+                </p>
+                <p class="value">kalycasuganda.dev@gmail.com</p>
+              </li>
+              <li class="info-card glass">
+                <p class="label">
+                  <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+                  Pendidikan
+                </p>
+                <p class="value">S1 Teknik Informatika UNESA (2026)</p>
+              </li>
+            </ul>
+          </div>
+
+          <div class="about-content reveal">
+            <h3>Belajar Membangun Website dari Dasar</h3>
+
+            <p>
+              Halo! Nama saya <strong>Kalyca Suganda</strong>. Saya adalah mahasiswa S1 Teknik Informatika di <strong>Universitas Negeri Surabaya (UNESA)</strong> angkatan 2026 yang berasal dari <strong>Palembang, Sumatera Selatan</strong>.
+            </p>
+
+            <p>
+              Website portofolio ini saya bangun untuk memenuhi tugas mata kuliah pemrograman web. Melalui tugas ini, saya belajar menyusun struktur halaman dengan HTML5 semantik, menata tata letak dengan CSS murni, serta menambahkan interaktivitas sederhana menggunakan JavaScript.
+            </p>
+
+            <p>
+              Sebagai mahasiswa yang masih dalam tahap awal belajar, saya menyadari web ini masih sederhana dan terus membutuhkan perbaikan. Saya sangat terbuka untuk menerima kritik, saran, serta bimbingan dari dosen maupun teman-teman agar pemahaman pemrograman saya dapat terus meningkat.
+            </p>
+
+            <ul class="timeline">
+              <li>
+                <p class="period">
+                  <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+                  2026 — Sekarang
+                </p>
+                <h4>Mahasiswa S1 Teknik Informatika</h4>
+                <p>Menempuh studi di Universitas Negeri Surabaya (UNESA), mempelajari dasar algoritma, logika komputer, dan pemrograman web dasar.</p>
+              </li>
+              <li>
+                <p class="period">
+                  <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+                  2026
+                </p>
+                <h4>Pengerjaan Tugas Web Portofolio</h4>
+                <p>Mempraktikkan teori kuliah ke dalam proyek website portofolio pribadi responsif dan latihan mini-proyek.</p>
+              </li>
+              <li>
+                <p class="period">
+                  <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+                  Sebelum 2026
+                </p>
+                <h4>Pendidikan Menengah (Palembang)</h4>
+                <p>Menyelesaikan pendidikan tingkat menengah di Palembang sebelum merantau dan melanjutkan studi di Surabaya.</p>
+              </li>
+            </ul>
+
+            <ul class="about-stats">
+              <li class="stat-card glass">
+                <strong>2026</strong>
+                <span>Tahun Masuk</span>
+              </li>
+              <li class="stat-card glass">
+                <strong>Dasar</strong>
+                <span>Tahap Belajar</span>
+              </li>
+              <li class="stat-card glass">
+                <strong>Aktif</strong>
+                <span>Status Mahasiswa</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== Projects ============================== -->
+    <section id="projects" aria-labelledby="projects-title">
+      <div class="container">
+        <header class="section-head reveal">
+          <span class="eyebrow">Tugas & Latihan</span>
+          <h2 id="projects-title">Daftar Tugas & Mini Proyek</h2>
+          <p>Beberapa tugas kuliah dan latihan praktikum pemrograman web yang telah saya buat.</p>
+        </header>
+
+        <div class="projects-grid" id="projects-grid">
+          <!-- Diisi oleh script.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== Skills ============================== -->
+    <section id="skills" aria-labelledby="skills-title">
+      <div class="container">
+        <header class="section-head reveal">
+          <span class="eyebrow">Materi Belajar</span>
+          <h2 id="skills-title">Materi yang Sedang Dipelajari</h2>
+          <p>Materi dasar pemrograman web serta tools pendukung yang digunakan selama proses perkuliahan.</p>
+        </header>
+
+        <div id="skills-groups">
+          <!-- Diisi oleh script.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== Contact ============================== -->
+    <section id="contact" aria-labelledby="contact-title">
+      <div class="container">
+        <header class="section-head reveal">
+          <span class="eyebrow">Kontak</span>
+          <h2 id="contact-title">Kontak & Masukan</h2>
+          <p>Punya saran, kritik, atau masukan untuk tugas web ini? Silakan kirimkan pesan melalui kontak atau formulir di bawah.</p>
+        </header>
+
+        <div class="contact-grid">
+          <div class="contact-info glass reveal">
+            <div>
+              <h3>Informasi Kontak</h3>
+              <p>Website portofolio ini dibuat untuk pemenuhan tugas kuliah. Kritik dan masukan yang membangun sangat saya hargai untuk proses belajar saya.</p>
+
+              <ul class="contact-list">
+                <li>
+                  <a class="contact-item" href="mailto:kalycasuganda.dev@gmail.com">
+                    <span class="badge" aria-hidden="true">
+                      <svg class="icon" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    </span>
+                    <span>
+                      <span class="label">Email</span>
+                      <span class="value">kalycasuganda.dev@gmail.com</span>
+                    </span>
+                  </a>
+                </li>
+                <li>
+                  <a class="contact-item" href="https://wa.me/6281234567890" target="_blank" rel="noreferrer noopener">
+                    <span class="badge" aria-hidden="true">
+                      <svg class="icon" viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+                    </span>
+                    <span>
+                      <span class="label">WhatsApp</span>
+                      <span class="value">+62 812-3456-7890</span>
+                    </span>
+                  </a>
+                </li>
+                <li>
+                  <a class="contact-item" href="https://www.linkedin.com/in/kalyca-suganda" target="_blank" rel="noreferrer noopener">
+                    <span class="badge" aria-hidden="true">
+                      <img class="brand-icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linkedin/linkedin-original.svg" alt="" width="20" height="20" />
+                    </span>
+                    <span>
+                      <span class="label">LinkedIn</span>
+                      <span class="value">Kalyca Suganda</span>
+                    </span>
+                  </a>
+                </li>
+                <li>
+                  <a class="contact-item" href="https://maps.google.com/?q=Palembang,+Sumatera+Selatan,+Indonesia" target="_blank" rel="noreferrer noopener" title="Buka di Google Maps">
+                    <span class="badge" aria-hidden="true">
+                      <svg class="icon" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    </span>
+                    <span>
+                      <span class="label">Alamat / Lokasi</span>
+                      <span class="value">Palembang, Sumatera Selatan, Indonesia</span>
+                    </span>
+                  </a>
+                </li>
+              </ul>
+
+              <div class="contact-map-wrap">
+                <iframe
+                  title="Peta Lokasi Palembang, Sumatera Selatan"
+                  src="https://maps.google.com/maps?q=Palembang,%20Sumatera%20Selatan&amp;t=&amp;z=11&amp;ie=UTF8&amp;iwloc=&amp;output=embed"
+                  loading="lazy"
+                  allowfullscreen
+                  referrerpolicy="no-referrer-when-downgrade"
+                ></iframe>
+                <div class="contact-map-badge">
+                  <svg class="icon" style="width:14px;height:14px;color:var(--accent)" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                  <span>Palembang, Sumatera Selatan</span>
+                </div>
+              </div>
+            </div>
+
+            <p class="response-note">
+              <strong>Catatan:</strong> Web portofolio ini dibuat untuk pemenuhan tugas akademik kuliah. Terima kasih sudah berkunjung!
+            </p>
+          </div>
+
+          <form class="contact-form glass reveal" id="contact-form" novalidate>
+            <div class="field" id="field-name">
+              <label for="name">Nama <span class="req" aria-hidden="true">*</span></label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Nama lengkap Anda"
+                autocomplete="name"
+                aria-required="true"
+                aria-describedby="error-name"
+              />
+              <p class="field-error" id="error-name" role="alert">
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                <span>Nama wajib diisi (minimal 2 karakter).</span>
+              </p>
+            </div>
+
+            <div class="field" id="field-email">
+              <label for="email">Email <span class="req" aria-hidden="true">*</span></label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="nama@email.com"
+                autocomplete="email"
+                aria-required="true"
+                aria-describedby="error-email"
+              />
+              <p class="field-error" id="error-email" role="alert">
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                <span>Email wajib diisi dengan format yang valid.</span>
+              </p>
+            </div>
+
+            <div class="field" id="field-message">
+              <label for="message">Pesan <span class="req" aria-hidden="true">*</span></label>
+              <textarea
+                id="message"
+                name="message"
+                rows="5"
+                placeholder="Ceritakan kebutuhan project Anda..."
+                aria-required="true"
+                aria-describedby="error-message"
+              ></textarea>
+              <p class="field-error" id="error-message" role="alert">
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                <span>Pesan wajib diisi (minimal 10 karakter).</span>
+              </p>
+            </div>
+
+            <div class="form-status" id="form-status" role="status" aria-live="polite"></div>
+
+            <button class="btn btn-primary btn-block" type="submit" id="submit-btn">
+              <span id="submit-label">Kirim Pesan</span>
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============================== Footer ============================== -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <p class="footer-brand">Kalyca Suganda<span class="brand-dot">.</span></p>
+        <p class="footer-copy">© <span id="year">2026</span> Kalyca Suganda · Palembang, Indonesia. All rights reserved.</p>
+      </div>
+
+      <nav aria-label="Navigasi footer">
+        <ul class="footer-nav">
+          <li><a class="menu-link" href="#home">Home</a></li>
+          <li><a class="menu-link" href="#about">About</a></li>
+          <li><a class="menu-link" href="#projects">Projects</a></li>
+          <li><a class="menu-link" href="#skills">Skills</a></li>
+          <li><a class="menu-link" href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <ul class="socials" aria-label="Sosial media footer">
+        <li>
+          <a class="social-link" href="https://github.com/kalyca" target="_blank" rel="noreferrer noopener" aria-label="Buka profil GitHub Kalyca Suganda">
+            <img class="brand-icon" src="https://cdn.simpleicons.org/github/94a3b8" alt="" width="20" height="20" loading="lazy" />
+          </a>
+        </li>
+        <li>
+          <a class="social-link" href="https://www.linkedin.com/in/kalyca-suganda" target="_blank" rel="noreferrer noopener" aria-label="Buka profil LinkedIn Kalyca Suganda">
+            <img class="brand-icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linkedin/linkedin-original.svg" alt="" width="20" height="20" loading="lazy" />
+          </a>
+        </li>
+        <li>
+          <a class="social-link" href="https://www.instagram.com/kalyca.suganda" target="_blank" rel="noreferrer noopener" aria-label="Buka profil Instagram Kalyca Suganda">
+            <img class="brand-icon" src="https://cdn.simpleicons.org/instagram/94a3b8" alt="" width="20" height="20" loading="lazy" />
+          </a>
+        </li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
